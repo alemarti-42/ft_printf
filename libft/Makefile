@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/05/25 20:18:03 by alemarti         ###   ########.fr        #
+#    Updated: 2021/07/06 19:55:39 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ SRCS	= ft_memset.c	 	\
 		  ft_putchar_fd.c	\
 		  ft_putstr_fd.c	\
 		  ft_putendl_fd.c	\
-		  ft_putnbr_fd.c	
-SRCS_B	= ft_lstnew.c		\
+		  ft_putnbr_fd.c	\
+		  ft_lstnew.c		\
 		  ft_lstadd_front.c	\
 		  ft_lstsize.c		\
 		  ft_lstlast.c		\
@@ -55,35 +55,23 @@ SRCS_B	= ft_lstnew.c		\
 		  ft_lstiter.c		\
 		  ft_lstmap.c
 
-
+PATH		= ../
+PATH_OBJS	= ../${OBJS}
 OBJS	= ${SRCS:.c=.o}
-OBJS_B	= ${SRCS_B:.c=.o}
-NAME	= libft.a
 CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra
 
-all:		${NAME}
+all:		ft_printf
 	
-${NAME}:	${OBJS}
-			ar rc	${NAME} ${OBJS}
-			ranlib	${NAME}
-
-
 clean:	
-			@${RM} ${OBJS} ${OBJS_B}
+			${RM} ${OBJS}
 
 fclean:		clean
-			@${RM} ${NAME}
 
-test:
-			@${CC} ${FLAGS} ${SRCS} main.c -o test.out
-			@./test.out
-			@rm test.out
-
-bonus:		${OBJS} ${OBJS_B}
-			ar rc ${NAME} ${OBJS} ${OBJS_B}
-			ranlib ${NAME}
+ft_printf:	${OBJS}
+			mv ${OBJS} ../
+			@echo "LIBFT COMPILADA"
 
 re:			fclean all
 
