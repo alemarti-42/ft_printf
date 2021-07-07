@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/07/06 19:53:38 by alemarti         ###   ########.fr        #
+#    Updated: 2021/07/07 18:16:06 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,8 @@ CFLAGS		= -Wall -Werror -Wextra
 
 all:		${NAME}
 
-${NAME}:	${OBJS}
-			ar rc	${NAME} ${OBJS}
+${NAME}:	${OBJS} ${LIBFT_OBJS}
+			ar rc	${NAME} ${OBJS} ${LIBFT_OBJS}
 
 libft:		${LIBFT_OBJS}
 
@@ -88,3 +88,7 @@ test_builtin:
 			${CC} ${CFLAGS} tests/main_builtin.c -o test.out
 			./test.out
 			@rm test.out
+
+test:		${LIBFT_OBJS} ${OBJS}
+			${CC} ${CFLAGS} ${OBJS} ${LIBFT_OBJS} tests/main.c -o test.out
+			
