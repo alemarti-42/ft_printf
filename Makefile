@@ -12,7 +12,7 @@
 
 SRCS		= ft_printf.c
 
-LIB_SRCS	= ft_memset.c	 	\
+LIBFT_SRCS	= ft_memset.c	 	\
 			  ft_bzero.c 		\
 			  ft_memcpy.c 		\
 			  ft_memccpy.c 		\
@@ -57,7 +57,7 @@ LIB_SRCS	= ft_memset.c	 	\
 			  ft_lstmap.c
 
 OBJS		= ${SRCS:.c=.o}
-LIB_OBJS	= ${LIB_SRCS:.c=.o}
+LIBFT_OBJS	= ${LIBFT_SRCS:.c=.o}
 
 NAME		= ft_printf.a
 CC			= gcc
@@ -69,13 +69,13 @@ all:		${NAME}
 ${NAME}:	${OBJS}
 			ar rc	${NAME} ${OBJS}
 
-libft:		${LIB_OBJS}
+libft:		${LIBFT_OBJS}
 
-${LIB_OBJS}:
+${LIBFT_OBJS}:
 			make -C ./libft/ ft_printf
 
 clean:
-			@${RM} ${OBJS} ${LIB_OBJS}
+			@${RM} ${OBJS} ${LIBFT_OBJS}
 
 fclean:		clean
 			@${RM} ${NAME}
