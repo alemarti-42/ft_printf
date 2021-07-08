@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:43:46 by alemarti          #+#    #+#             */
-/*   Updated: 2021/06/30 21:34:06 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/08 19:25:25 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int		main(void)
 	show_int_test(int_test, 20, 5);
 	show_int_test(int_test, -10, 5);
 	show_int_test(int_test, 40, 30);
+
+	printf("%-0-30.30d\n", 12345);
+	printf("%.3d\n", 12345);
 	return (0);
 }
 

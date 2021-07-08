@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/07/07 18:16:06 by alemarti         ###   ########.fr        #
+#    Updated: 2021/07/08 19:46:03 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,10 +85,13 @@ re:			fclean all
 PHONY:		all clean fclean re
 
 test_builtin:	
-			${CC} ${CFLAGS} tests/main_builtin.c -o test.out
+			${CC} tests/main_builtin.c -o test.out
 			./test.out
 			@rm test.out
 
 test:		${LIBFT_OBJS} ${OBJS}
-			${CC} ${CFLAGS} ${OBJS} ${LIBFT_OBJS} tests/main.c -o test.out
-			
+			@${CC} ${CFLAGS} ${OBJS} ${LIBFT_OBJS} tests/main.c -o test.out
+			./test.out
+
+testclean:	clean
+			@${RM} test.out
