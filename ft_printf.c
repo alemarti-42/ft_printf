@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:45:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/09 15:26:57 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/09 18:40:51 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		ft_printf(const char *str, ...)
 	res = 0;
 	va_start(args, str);
 	res = ft_print_line(str, &args);
+	return (-1);
 	va_end(args);
 	return (0);
 }
@@ -40,6 +41,7 @@ int			ft_print_line(const char *str,  va_list *args)
 	int		i;
 	int		count;
 	int		res;
+	int		print_param_ctl;
 	
 	va_list *p = args;
 	p = 0;
@@ -53,7 +55,10 @@ int			ft_print_line(const char *str,  va_list *args)
 		if (str[i] == '%')
 		{
 			i++;
-			i += ft_print_param(&str[i], args, &count);
+			print_param_ctl = ft_print_param(&str[i], args, &count);
+			if (print_param_ctl == -1)
+				return (-1);
+			i += print_param_ctl;
 		}
 		
 		write (1, &str[i], 1);
