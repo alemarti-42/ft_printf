@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:45:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/08 19:58:08 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/09 15:26:57 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int		ft_printf(const char *str, ...)
 
 	res = 0;
 	va_start(args, str);
-	res = ft_print_str(str, &args);
+	res = ft_print_line(str, &args);
 	va_end(args);
 	return (0);
 }
 
-int			ft_print_str(const char *str,  va_list *args)
+int			ft_print_line(const char *str,  va_list *args)
 {
 	int		i;
 	int		count;
@@ -83,15 +83,15 @@ int			ft_print_param(const char *str, va_list *args, int *total_length)
 	if (!format)
 		return (-1);
 			
-	print_format_struct(format);
 	
 	format_len = ft_parse_format(str, format);
+	ft_sort_format(args, format);
 	free(format);
 	return (format_len);
 }
 
 //TODO: Parseo de los argumentos a string
-int			ft_parse_arg(
+//int			ft_parse_arg();
 
 int			ft_parse_format(const char *str, t_format *format)
 {
@@ -126,8 +126,9 @@ int			ft_parse_format(const char *str, t_format *format)
 	if (!ft_strchr(available_formats, str[i]))
 			return (-1);
 	format->datatype = str[i];
-	print_format_struct(format);
-	return (i);
+//	print_format_struct(format);
+//	printf("\n\tLETRAS: %d", i);
+	return (i + 1);
 }
 
 int		ft_get_precision(const char *str, t_format *form)
