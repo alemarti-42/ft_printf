@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   format_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/09 13:08:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/09 19:01:32 by alemarti         ###   ########.fr       */
+/*   Created: 2021/07/09 18:55:17 by alemarti          #+#    #+#             */
+/*   Updated: 2021/07/09 18:59:30 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_sort_format(va_list *args, t_format *format)
+t_format	*ft_init_format(void)
 {
-	if (format->datatype == 's' || format->datatype == 'c')
-	{
-		return (ft_print_str(va_arg(*args, char *), format));
-	}
-	if (format->datatype == 'i' || format->datatype == 'd')
-		return (ft_print_str(ft_itoa(va_arg(*args, int)), format));
-	return (0);
+	t_format	*res;
+
+	res = (t_format *)malloc(sizeof(t_format));
+	if (!res || ft_reset_format(res) == -1)
+		return (NULL);
+	return (res);
 }
 
-void	ft_padding(char c, int n)
+int		ft_reset_format(t_format *form)
 {
-	while (n > 0)
-	{
-		write (1, &c, 1);
-		n--;
-	}
+	if (!form)
+		return (-1);
+	form->flags = 0;
+	form->width = -1;
+	form->precision = -1;
+	form->datatype = 0;
+	form->str = 0;
+	return (0);
 }
