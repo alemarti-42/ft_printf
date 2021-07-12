@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/09 19:00:40 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:08:52 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			ft_parse_format(const char *str, t_format *format)
 	int	i;
 	char	*available_formats;
 
-	available_formats = "cspdiuxX";
+	available_formats = "cspdiuxX%";
 	i = 0;
 
 

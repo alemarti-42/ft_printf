@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:45:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/09 19:04:07 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:22:52 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
+// TESTING **************************************
 void	print_format_struct(t_format *format)
 {
 	printf("\n********************\n");
@@ -22,6 +22,7 @@ void	print_format_struct(t_format *format)
 	printf("\nDATATYPE:\t%c", format->datatype);
 	printf("\n********************\n");
 }
+//**********************************************
 
 int		ft_printf(const char *str, ...)
 {
@@ -31,9 +32,8 @@ int		ft_printf(const char *str, ...)
 	res = 0;
 	va_start(args, str);
 	res = ft_print_line(str, &args);
-	return (-1);
 	va_end(args);
-	return (0);
+	return (res);
 }
 
 int			ft_print_line(const char *str,  va_list *args)
@@ -41,7 +41,7 @@ int			ft_print_line(const char *str,  va_list *args)
 	int		i;
 	int		count;
 	int		res;
-	int		print_param_ctl;
+	int		print_param_len;
 	
 	va_list *p = args;
 	p = 0;
@@ -55,10 +55,10 @@ int			ft_print_line(const char *str,  va_list *args)
 		if (str[i] == '%')
 		{
 			i++;
-			print_param_ctl = ft_print_param(&str[i], args, &count);
-			if (print_param_ctl == -1)
+			print_param_len = ft_print_param(&str[i], args, &count);
+			if (print_param_len < 0)
 				return (-1);
-			i += print_param_ctl;
+			i += print_param_len;
 		}
 		
 		write (1, &str[i], 1);
@@ -67,6 +67,13 @@ int			ft_print_line(const char *str,  va_list *args)
 	}
 	return (i);
 }
+
+/*
+ *	ft_print_param returns the length of the format specifier on the input line needed
+ *	to read the line properly.
+ *	Ex: %10.3d	-> 5
+ *	Also leaves on total_length the 
+ */
 int			ft_print_param(const char *str, va_list *args, int *total_length)
 {
 	t_format	*format;
@@ -78,19 +85,23 @@ int			ft_print_param(const char *str, va_list *args, int *total_length)
 
 	i = 0;
 	format_len = 0;
+/*
 	if (str[i] == '%')
 	{
 		write(1, "%", 1);
 		*total_length += 1;
 		return (1);
 	}
+*/
 	format = ft_init_format();
 	if (!format)
 		return (-1);
 			
 	
 	format_len = ft_parse_format(str, format);
-	ft_sort_format(args, format);
+	*total_length += ft_sort_format(args, format);
 	free(format);
+	if (*total_length < 0)
+		return (-1);
 	return (format_len);
 }
