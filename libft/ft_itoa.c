@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:55:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/05/24 19:05:18 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/13 20:09:49 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	nsize(long n);
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	char	*res;
 	size_t	size;

@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:08:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/13 19:58:01 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/13 20:11:34 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_int(int nbr, t_format *format)
+int		ft_print_int(long nbr, t_format *format)
 {
 	char	*nb_ascii;
 	char	*swap;
