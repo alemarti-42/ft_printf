@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/07/09 19:29:24 by alemarti         ###   ########.fr        #
+#    Updated: 2021/07/13 16:37:43 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS		= ft_printf.c		\
 			  parse_utils.c		\
 			  format_utils.c	\
 			  string_utils.c	\
-			  char_utils.c
+			  char_utils.c		\
+			  decimal_utils.c
 
 LIBFT_SRCS	= ft_memset.c	 	\
 			  ft_bzero.c 		\
