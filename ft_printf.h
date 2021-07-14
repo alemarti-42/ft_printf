@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/13 21:37:03 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/14 17:25:29 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ int			check_format_char(t_format *format);
 //	decimal_utils.c
 int			ft_print_int(long nbr, t_format *format);
 char		*ft_put_zeroes(char *nb_ascii, t_format *format);
-int			check_format_int(t_format *format);
+int			check_format_int(long nbr,t_format *format);
 
 // HEXA
 int			ft_print_hexa(unsigned long nbr, t_format *format);
 char		*ft_itoa_base(unsigned long nb, char *base);
-void		reverse_string(char **str);
+char		*ft_str_add_chr(const char *str, const char chr);
+char		*reverse_string(char *str);
 
 //	TESTING ***********************************
 void		test_print_format_struct(t_format *format);
