@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 13:08:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/15 17:45:55 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/15 19:00:40 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int		ft_sort_format(va_list *args, t_format *format)
 	if (format->datatype == '%')
 		return (ft_print_str("%", format));
 	if (format->datatype == 's')
-	{
 		return (ft_print_str(va_arg(*args, char *), format));
-	}
 	if (format->datatype == 'c')
 		return (ft_print_chr(va_arg(*args, int), format));
 	if (format->datatype == 'i' || format->datatype == 'd')
