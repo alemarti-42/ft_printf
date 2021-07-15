@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 20:14:27 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/14 20:42:08 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/07/15 17:42:21 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ int		ft_print_hexa(unsigned long nbr, t_format *format)
 	int		res;
 
 	hexa = 0;
-	hexa = ft_itoa_base(nbr, "0123456789abcdef");
+	if (format->datatype == 'x')
+		hexa = ft_itoa_base(nbr, "0123456789abcdef");
+	if (format->datatype == 'X')
+		hexa = ft_itoa_base(nbr, "0123456789ABCDEF");
 	res = ft_print_str(hexa, format);
+	printf("\n[!]%d", res);
+	free(hexa);
 //	printf("\n\t[-]hexa:%s|res:%d\n", hexa, res);
 	return (res);
 }

@@ -27,6 +27,7 @@ int		ft_print_int(long nbr, t_format *format)
 	free(swap);
 
 	sp_padding = format->width - ft_strlen(nb_ascii);
+	sp_padding *= (sp_padding > 0);
 
 
 	if (format->flags == '-')

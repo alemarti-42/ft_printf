@@ -67,7 +67,7 @@ int			ft_print_line(const char *str,  va_list *args)
 		i++;
 		count++;
 	}
-	return (i);
+	return (count);
 }
 
 /*

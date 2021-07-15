@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/07/14 20:52:46 by alemarti         ###   ########.fr        #
+#    Updated: 2021/07/15 17:31:26 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ LIBFT_SRCS	= ft_memset.c	 	\
 OBJS		= ${SRCS:.c=.o}
 LIBFT_OBJS	= ${LIBFT_SRCS:.c=.o}
 
-NAME		= ft_printf.a
+NAME		= libftprintf.a
 CC			= gcc
 RM			= rm -f
 CFLAGS		= -Wall -Werror -Wextra
@@ -75,7 +75,8 @@ CFLAGS		= -Wall -Werror -Wextra
 all:		${NAME}
 
 ${NAME}:	${OBJS} ${LIBFT_OBJS}
-			ar rc	${NAME} ${OBJS} ${LIBFT_OBJS}
+			ar rc ${NAME} ${OBJS} ${LIBFT_OBJS}
+			ranlib ${NAME}
 
 libft:		${LIBFT_OBJS}
 
@@ -98,7 +99,7 @@ test_builtin:
 			@rm test.out
 
 test:		${LIBFT_OBJS} ${OBJS}
-			@${CC} ${CFLAGS} ${OBJS} ${LIBFT_OBJS} tests/main.c -o test.out
+			@${CC} ${OBJS} ${LIBFT_OBJS} tests/main.c -o test.out
 			./test.out
 
 testclean:	clean

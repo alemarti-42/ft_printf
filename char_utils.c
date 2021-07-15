@@ -24,6 +24,8 @@ int ft_print_chr(int ascii, t_format *format)
 	ft_padding(' ', format->width - 1);
 	if (format->flags == 0)
 		write(1, &c, 1);
+	if (format->width <= 0)
+		return (1);
 	return (format->width);
 }
 

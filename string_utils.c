@@ -25,6 +25,7 @@ int		ft_print_str(char *str, t_format *format)
 	if (format->precision >= 0 && len > format->precision)
 		len = format->precision;
 	pre_padding = format->width  - len;
+	pre_padding *= (pre_padding > 0);
 	post_padding = 0;
 	if (format->flags == '-')
 	{
