@@ -23,7 +23,6 @@ int		ft_print_hexa(unsigned long nbr, t_format *format)
 	if (format->datatype == 'X')
 		hexa = ft_itoa_base(nbr, "0123456789ABCDEF");
 	res = ft_print_str(hexa, format);
-	printf("\n[!]%d", res);
 	free(hexa);
 //	printf("\n\t[-]hexa:%s|res:%d\n", hexa, res);
 	return (res);
