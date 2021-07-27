@@ -153,8 +153,8 @@ int	main(void)
 	printf("\n");
 	
 
-	printf("\n|%d|\n", printf("%d", 0));
-	printf("\n|%d|\n", ft_printf("%d", 0));
+	printf("\n|%d|\n", printf("%c", 0));
+	printf("\n|%d|\n", ft_printf("%c", 0));
 
 //	system("leaks test.out");
 
