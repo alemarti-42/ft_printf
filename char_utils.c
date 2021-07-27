@@ -17,6 +17,7 @@ int ft_print_chr(int ascii, t_format *format)
 	char	c;
 
 	c = (char)ascii;
+	test_print_format_struct(format);
 	if (!check_format_char(format))
 		return (-1);
 	if (format->flags == '-')
