@@ -32,7 +32,7 @@ int ft_print_chr(int ascii, t_format *format)
 
 int		check_format_char(t_format *format)
 {
-	if (format->flags != '-' && format->flags != 0)
+	if (format->flags != '-' && format->flags)
 		return (0);	   
 	if	(format->precision != -1)
 		return (0);
