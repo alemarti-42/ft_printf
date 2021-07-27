@@ -152,7 +152,11 @@ int	main(void)
 	printf("\tBI:%d\tMI:%d\n", res1, res2);
 	printf("\n");
 	
-	system("leaks test.out");
+
+	printf("\n%d\n", printf("%d", 0));
+	printf("\n%d\n", ft_printf("%d", 0));
+
+//	system("leaks test.out");
 
 	return (0);
 }
