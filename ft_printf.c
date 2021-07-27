@@ -16,10 +16,10 @@
 void	test_print_format_struct(t_format *format)
 {
 	printf("\n>>");
-	printf("\nFLAGS:\t\t%c", format->flags);
-	printf("\nWIDTH:\t\t%d", format->width);
-	printf("\nPRECIS:\t\t%d", format->precision);
-	printf("\nDATATYPE:\t%c", format->datatype);
+	printf("\nFLAGS:\t\t%c\n", format->flags);
+	printf("\nWIDTH:\t\t%d\n", format->width);
+	printf("\nPRECIS:\t\t%d\n", format->precision);
+	printf("\nDATATYPE:\t%c\n", format->datatype);
 	printf("\n<<\n");
 }
 //**********************************************
