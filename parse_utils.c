@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/13 19:51:25 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:52:30 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int			ft_parse_format(const char *str, t_format *format)
 				format->flags = '-';
 			i++;
 		}
+	}
+	if (str[0] == '#')
+	{
+		format->flags = '#';
+		i++;
 	}
 	i += ft_get_width(&str[i], format);
 	if (str[i] == '.')

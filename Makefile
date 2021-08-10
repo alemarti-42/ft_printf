@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/07/15 17:31:26 by alemarti         ###   ########.fr        #
+#    Updated: 2021/08/10 15:40:51 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,8 @@ RM			= rm -f
 CFLAGS		= -Wall -Werror -Wextra
 
 all:		${NAME}
+
+bonus:		all
 
 ${NAME}:	${OBJS} ${LIBFT_OBJS}
 			ar rc ${NAME} ${OBJS} ${LIBFT_OBJS}

@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 13:50:16 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 16:23:53 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			ft_print_param(const char *str, va_list *args, int *pos);
 
 //	ft_printf_utils.c
 int			ft_sort_format(va_list *args, t_format *format);
-void		ft_padding(char c, int n);
+int		ft_padding(char c, int n);
 
 //		parse_utils.c
 int			ft_parse_format(const char *str, t_format *format);
