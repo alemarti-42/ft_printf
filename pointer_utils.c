@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 20:43:04 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/14 21:00:43 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:30:15 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_pointer(unsigned long mem, t_format *format)
+int	ft_print_pointer(unsigned long mem, t_format *format)
 {
 	char	*swap;
 	char	*res;

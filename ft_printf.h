@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 16:23:53 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:26:36 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-typedef struct	s_format
+typedef struct s_format
 {
 	char	flags;
 	int		width;
@@ -34,7 +34,7 @@ int			ft_print_param(const char *str, va_list *args, int *pos);
 
 //	ft_printf_utils.c
 int			ft_sort_format(va_list *args, t_format *format);
-int		ft_padding(char c, int n);
+int			ft_padding(char c, int n);
 
 //		parse_utils.c
 int			ft_parse_format(const char *str, t_format *format);
@@ -56,7 +56,7 @@ int			check_format_char(t_format *format);
 //	decimal_utils.c
 int			ft_print_int(long nbr, t_format *format);
 char		*ft_put_zeroes(char *nb_ascii, t_format *format);
-int			check_format_int(long nbr,t_format *format);
+int			check_format_int(long nbr, t_format *format);
 
 // HEXA
 int			ft_print_hexa(unsigned int nbr, t_format *format);

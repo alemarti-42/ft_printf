@@ -1,4 +1,4 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 13:08:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 16:24:49 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:27:16 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_sort_format(va_list *args, t_format *format)
+int	ft_sort_format(va_list *args, t_format *format)
 {
 	if (format->datatype == '%')
 		return (ft_print_str("%", format));
@@ -33,7 +33,7 @@ int		ft_sort_format(va_list *args, t_format *format)
 
 int	ft_padding(char c, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (n > 0)

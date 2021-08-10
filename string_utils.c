@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:52:56 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 18:46:59 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:32:46 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_str(char *str, t_format *format)
+int	ft_print_str(char *str, t_format *format)
 {
 	int		pre_padding;
 	int		post_padding;
@@ -28,7 +28,7 @@ int		ft_print_str(char *str, t_format *format)
 		len = format->precision;
 	if (format->flags == '0')
 		filling = '0';
-	pre_padding = format->width  - len;
+	pre_padding = format->width - len;
 	pre_padding *= (pre_padding > 0);
 	post_padding = 0;
 	if (format->flags == '-')
@@ -41,16 +41,13 @@ int		ft_print_str(char *str, t_format *format)
 	ft_putstr_fd(aux, 1);
 	ft_padding(filling, post_padding);
 	free(aux);
-//	printf("\n[print_str]len:%dpre:%dpost:%d\n", len, pre_padding, post_padding);
-	return(len + pre_padding + post_padding);
-
+	return (len + pre_padding + post_padding);
 }
 
-int		check_format_string(t_format *format)
+int	check_format_string(t_format *format)
 {
-	if (format->flags == '0' || format->flags == '-' || format->flags == ' '
-			|| !format->flags )
+	if (format->flags == '0' || format->flags == '-' || \
+			format->flags == ' ' || !format->flags)
 		return (1);
 	return (0);
-	
 }

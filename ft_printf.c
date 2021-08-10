@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:45:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 12:59:34 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:24:45 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test_print_format_struct(t_format *format)
 }
 //**********************************************
 
-int		ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list		args;
 	int			res;
@@ -36,27 +36,20 @@ int		ft_printf(const char *str, ...)
 	return (res);
 }
 
-int			ft_print_line(const char *str,  va_list *args)
+int	ft_print_line(const char *str, va_list *args)
 {
 	int		i;
 	int		count;
-	int		res;
 	int		print_param_len;
-	
-	va_list *p = args;
-	p = 0;
 
 	i = 0;
 	count = 0;
-	res = 0;
 	while (str[i])
 	{
-		
 		if (str[i] == '%')
 		{
 			i++;
 			print_param_len = ft_print_param(&str[i], args, &count);
-//			printf("\nFRMTLEN:%d\n", print_param_len);
 			if (print_param_len < 0)
 				return (-1);
 			i += print_param_len;
@@ -72,36 +65,26 @@ int			ft_print_line(const char *str,  va_list *args)
 }
 
 /*
- *	ft_print_param returns the length of the format specifier on the input line needed
- *	to read the line properly.
+ *	ft_print_param returns the length of the format specifier on the input line
+ *	needed to read the line properly.
  *	Ex: %10.3d	-> 5
  *	Also leaves on total_length the 
  */
-int			ft_print_param(const char *str, va_list *args, int *total_length)
+int	ft_print_param(const char *str, va_list *args, int *total_length)
 {
 	t_format	*format;
 	int			i;
 	int			format_len;
 	int			format_ctl;
+	va_list		*p;
 
-	va_list *p = args;
+	p = args;
 	p = 0;
-
 	i = 0;
 	format_len = 0;
-/*
-	if (str[i] == '%')
-	{
-		write(1, "%", 1);
-		*total_length += 1;
-		return (1);
-	}
-*/
 	format = ft_init_format();
 	if (!format)
 		return (-1);
-			
-	
 	format_len = ft_parse_format(str, format);
 	format_ctl = ft_sort_format(args, format);
 	*total_length += format_ctl;

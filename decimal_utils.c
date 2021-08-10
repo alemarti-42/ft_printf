@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:08:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 18:42:45 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:15:24 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,11 @@ char	*ft_put_zeroes(char *nb_ascii, t_format *format)
 	res[0] = '-';
 	i += is_neg;
 	nb_ascii += is_neg;
-	/*
-	if (is_neg)
-	{
-		res[i] = *nb_ascii;
-		i++;
-		nb_ascii++;
-	}
-	*/
 	while (ze_padding-- > 0)
-	{
-		res[i] = '0';
-		i++;
-	}
+		res[i++] = '0';
 	while (digits-- > 0)
 	{
-		res[i] = *nb_ascii;
-		i++;
+		res[i++] = *nb_ascii;
 		nb_ascii++;
 	}
 	res[i] = 0;

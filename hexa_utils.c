@@ -6,21 +6,17 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 20:14:27 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 17:08:48 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:28:23 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_hexa(unsigned int nbr, t_format *format)
+int	ft_print_hexa(unsigned int nbr, t_format *format)
 {
 	char	*hexa;
 	int		res;
 
-//	if (nbr < 0)
-//		nbr = 0;
-//	if (nbr > 4294967295)
-//		nbr = 4294967295;
 	hexa = 0;
 	res = 0;
 	if (format->datatype == 'x')
@@ -40,7 +36,6 @@ int		ft_print_hexa(unsigned int nbr, t_format *format)
 	format->flags *= format->flags != '#';
 	res += ft_print_str(hexa, format);
 	free(hexa);
-//	printf("\n\t[-]hexa:%s|res:%d\n", hexa, res);
 	return (res);
 }
 
@@ -60,20 +55,15 @@ char	*ft_itoa_base(unsigned long nb, char *base)
 	while (nb >= base_size)
 	{
 		swap = res;
-//		printf("\n\t[i]:%s\n", res);
 		res = ft_str_add_chr(swap, base[nb % base_size]);
-//		printf("\n[+]%s|%ld|BS%zu\n", res, nb, base_size);
 		free(swap);
 		i++;
 		nb /= base_size;
 	}
 	swap = res;
 	res = ft_str_add_chr(swap, base[nb]);
-//	printf("\n[+]%s|%ld|BS%zu\n", res, nb, base_size);
 	free(swap);
-//	printf("\n\t[u]:%s\n", res);
 	reverse_string(res);
-//	printf("\n\t[u]:%s\n", res);
 	return (res);
 }
 
@@ -83,7 +73,6 @@ char	*ft_str_add_chr(const char *str, const char chr)
 	char	*res;
 	int		i;
 
-//	printf("\n[+]%s\n", str);
 	size = ft_strlen(str) + sizeof(char) + 1;
 	res = (char *)malloc(size);
 	if (!res)
@@ -99,20 +88,17 @@ char	*ft_str_add_chr(const char *str, const char chr)
 
 void	reverse_string(char *str)
 {
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 	char	aux;
 
 	len = ft_strlen(str);
 	i = 0;
-//	printf("\n[+]len:%d\n", len);
 	while (i < len / 2)
 	{
 		aux = str[len - i - 1];
 		str[len - i - 1] = str[i];
 		str[i] = aux;
-
 		i++;
 	}
 }
-
