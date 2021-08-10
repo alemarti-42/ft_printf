@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:08:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 15:38:20 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 18:42:45 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 int	ft_print_int(long nbr, t_format *format)
 {
 	char	*nb_ascii;
+	char	filling;
 	char	*swap;
 	int		sp_padding;
 
+	filling = ' ';
 	if (!check_format_int(nbr, format))
 		return (-1);
 	swap = ft_itoa(nbr);
@@ -28,6 +30,11 @@ int	ft_print_int(long nbr, t_format *format)
 	if (format->flags == '-')
 		ft_putstr_fd(nb_ascii, 1);
 	ft_padding(' ', sp_padding);
+	if ((format->flags == ' ' || format->flags == '+') && nbr >= 0)
+	{
+		write(1, &format->flags, 1);
+		sp_padding++;
+	}
 	if (format->flags != '-')
 		ft_putstr_fd(nb_ascii, 1);
 	free(nb_ascii);

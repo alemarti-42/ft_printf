@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:52:56 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 16:46:40 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 18:46:59 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ int		ft_print_str(char *str, t_format *format)
 
 int		check_format_string(t_format *format)
 {
-//	test_print_format_struct(format);
-	if (format->flags == '0' || format->flags == '-' || !format->flags )
+	if (format->flags == '0' || format->flags == '-' || format->flags == ' '
+			|| !format->flags )
 		return (1);
-//	if (format->flags == '#' && (format->datatype == 'x' || format->datatype == 'X'))
-//		return (1);
-	/*
-	if (format->precision < 0)
-		return (0);
-		*/
 	return (0);
 	
 }
