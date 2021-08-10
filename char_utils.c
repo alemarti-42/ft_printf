@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 19:08:03 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/12 19:20:14 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 12:47:24 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int ft_print_chr(int ascii, t_format *format)
 	char	c;
 
 	c = (char)ascii;
-	test_print_format_struct(format);
+//	test_print_format_struct(format);
 	if (!check_format_char(format))
 		return (-1);
 	if (format->flags == '-')
@@ -26,7 +26,10 @@ int ft_print_chr(int ascii, t_format *format)
 	if (format->flags == 0)
 		write(1, &c, 1);
 	if (format->width <= 0)
+	{
+//		printf("STOP");
 		return (1);
+	}
 	return (format->width);
 }
 

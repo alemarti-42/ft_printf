@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 15:45:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/13 19:52:04 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 12:59:34 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int		ft_printf(const char *str, ...)
 	va_start(args, str);
 	res = ft_print_line(str, &args);
 	va_end(args);
-	if (res < 0)
-		printf("\n\tBUGASOOOO\n");
 	return (res);
 }
 
@@ -58,14 +56,17 @@ int			ft_print_line(const char *str,  va_list *args)
 		{
 			i++;
 			print_param_len = ft_print_param(&str[i], args, &count);
+//			printf("\nFRMTLEN:%d\n", print_param_len);
 			if (print_param_len < 0)
 				return (-1);
 			i += print_param_len;
 		}
-		
-		write (1, &str[i], 1);
-		i++;
-		count++;
+		else
+		{
+			write (1, &str[i], 1);
+			i++;
+			count++;
+		}
 	}
 	return (count);
 }
@@ -105,7 +106,7 @@ int			ft_print_param(const char *str, va_list *args, int *total_length)
 	format_ctl = ft_sort_format(args, format);
 	*total_length += format_ctl;
 	free(format);
-	if (*total_length < 0 || format_ctl < 0)
+	if (format_ctl < 0)
 		return (-1);
 	return (format_len);
 }

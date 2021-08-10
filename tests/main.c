@@ -116,7 +116,7 @@ int	main(void)
 // 	ft_printf ("\nPUNTERO:|%p|\n", ptr);
 // 	printf ("\nPUNTERO:|%20p|\n", ptr);
 // 	ft_printf ("\nPUNTERO:|%20p|\n", ptr);
-
+/*
 	res1 = printf("\n[1]B-IN:%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X\n", i, j, k, l, m,     n, c, c, j, j, j);
 	res2 = ft_printf("\n[1]MINE:%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X\n", i, j, k, l, m,     n, c, c, j, j, j);
 	printf("\tBI:%d\tMI:%d\n", res1, res2);
@@ -155,6 +155,9 @@ int	main(void)
 
 	printf("\n|%d|\n", printf("%c", 0));
 	printf("\n|%d|\n", ft_printf("%c", 0));
+*/
+	printf("\n|%d|\n", printf("%c", '0'));
+	printf("\n|%d|\n", ft_printf("%c", '0'));
 
 //	system("leaks test.out");
 
