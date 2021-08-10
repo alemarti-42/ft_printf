@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 13:08:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/15 19:00:40 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 13:49:58 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		ft_sort_format(va_list *args, t_format *format)
 	if (format->datatype == 'u')
 		return (ft_print_int(va_arg(*args, unsigned int), format));
 	if (format->datatype == 'x')
-		return (ft_print_hexa(va_arg(*args, unsigned long), format));
+		return (ft_print_hexa(va_arg(*args, unsigned int), format));
 	if (format->datatype == 'X')
-		return (ft_print_hexa(va_arg(*args, unsigned long), format));
+		return (ft_print_hexa(va_arg(*args, unsigned int), format));
 	if (format->datatype == 'p')
 		return (ft_print_pointer(va_arg(*args, unsigned long), format));
 	return (-1);

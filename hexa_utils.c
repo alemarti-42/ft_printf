@@ -6,17 +6,21 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 20:14:27 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 13:10:57 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 13:50:41 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_hexa(unsigned long nbr, t_format *format)
+int		ft_print_hexa(unsigned int nbr, t_format *format)
 {
 	char	*hexa;
 	int		res;
 
+//	if (nbr < 0)
+//		nbr = 0;
+//	if (nbr > 4294967295)
+//		nbr = 4294967295;
 	hexa = 0;
 	if (format->datatype == 'x')
 		hexa = ft_itoa_base(nbr, "0123456789abcdef");

@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/07/14 20:56:17 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 13:50:16 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char		*ft_put_zeroes(char *nb_ascii, t_format *format);
 int			check_format_int(long nbr,t_format *format);
 
 // HEXA
-int			ft_print_hexa(unsigned long nbr, t_format *format);
+int			ft_print_hexa(unsigned int nbr, t_format *format);
 char		*ft_itoa_base(unsigned long nb, char *base);
 char		*ft_str_add_chr(const char *str, const char chr);
 void		reverse_string(char *str);
