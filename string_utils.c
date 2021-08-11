@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:52:56 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:21:26 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:54:21 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,12 @@ int	print_str(char *str, t_format *format)
 		return (-1);
 	if (format->precision >= 0 && len > format->precision)
 		len = format->precision;
-	if (format->flags == '0')
-		filling = '0';
+	filling = '0' * (format->flags == '0');
 	pre_padding = format->width - len;
 	pre_padding *= (pre_padding > 0);
 	post_padding = 0;
-	if (format->flags == '-')
-	{
-		post_padding = pre_padding;
-		pre_padding = 0;
-	}
+	post_padding = pre_padding * (format->flags == '-');
+	pre_padding = 1 * (format->flags != '-');
 	aux = ft_substr(str, 0, len);
 	padding(filling, pre_padding);
 	ft_putstr_fd(aux, 1);

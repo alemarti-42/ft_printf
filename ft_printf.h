@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:25:16 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:48:39 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			padding(char c, int n);
 
 //		parse_utils.c
 int			parse_format(const char *str, t_format *format);
+int			get_flags(const char *str, t_format *format);
 int			get_precission(const char *str, t_format *form);
 int			get_width(const char *str, t_format *form);
 

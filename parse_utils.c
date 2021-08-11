@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:19:35 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:49:40 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,7 @@ int	parse_format(const char *str, t_format *format)
 
 	available_formats = "cspdiuxX%";
 	i = 0;
-	while (str[i] == '0' || str[i] == '-')
-	{
-		while (str[i] == '0')
-		{
-			if (format->flags != '-')
-				format->flags = '0';
-			i++;
-		}
-		while (str[i] == '-')
-		{
-			if (format->flags != '-')
-				format->flags = '-';
-			i++;
-		}
-	}
-	if (str[0] == '#' || str[0] == ' ' || str[0] == '+')
-	{
-		format->flags = str[0];
-		i++;
-	}
+	i += get_flags(str, format);
 	i += get_width(&str[i], format);
 	if (str[i] == '.')
 	{
@@ -49,6 +30,33 @@ int	parse_format(const char *str, t_format *format)
 		return (-1);
 	format->datatype = str[i];
 	return (i + 1);
+}
+
+int	get_flags(const char *str, t_format *form)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] == '0' || str[i] == '-')
+	{
+		while (str[i] == '0')
+		{
+			if (format->flags != '-')
+				format->flags = '0';
+			i++;
+		}
+		while (str[i++] == '-')
+			if (format->flags != '-')
+				format->flags = '-';
+	}
+	if (str[0] == '#' || str[0] == ' ' || str[0] == '+')
+	{
+		if (format->flags)
+			return (0);
+		format->flags = str[0];
+		i++;
+	}
+	return (i);
 }
 
 int	get_precission(const char *str, t_format *form)
