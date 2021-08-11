@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:08:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 19:15:24 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:23:39 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_int(long nbr, t_format *format)
+int	print_int(long nbr, t_format *format)
 {
 	char	*nb_ascii;
 	char	filling;
@@ -23,13 +23,13 @@ int	ft_print_int(long nbr, t_format *format)
 	if (!check_format_int(nbr, format))
 		return (-1);
 	swap = ft_itoa(nbr);
-	nb_ascii = ft_put_zeroes(swap, format);
+	nb_ascii = put_zeroes(swap, format);
 	free(swap);
 	sp_padding = format->width - ft_strlen(nb_ascii);
 	sp_padding *= (sp_padding > 0);
 	if (format->flags == '-')
 		ft_putstr_fd(nb_ascii, 1);
-	ft_padding(' ', sp_padding);
+	padding(' ', sp_padding);
 	if ((format->flags == ' ' || format->flags == '+') && nbr >= 0)
 	{
 		write(1, &format->flags, 1);
@@ -41,7 +41,7 @@ int	ft_print_int(long nbr, t_format *format)
 	return (sp_padding + ft_strlen(nb_ascii));
 }
 
-char	*ft_put_zeroes(char *nb_ascii, t_format *format)
+char	*put_zeroes(char *nb_ascii, t_format *format)
 {
 	int		is_neg;
 	int		digits;

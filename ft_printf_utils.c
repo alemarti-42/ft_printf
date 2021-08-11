@@ -6,32 +6,32 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 13:08:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 19:27:16 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:17:46 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_sort_format(va_list *args, t_format *format)
+int	sort_format(va_list *args, t_format *format)
 {
 	if (format->datatype == '%')
-		return (ft_print_str("%", format));
+		return (print_str("%", format));
 	if (format->datatype == 's')
-		return (ft_print_str(va_arg(*args, char *), format));
+		return (print_str(va_arg(*args, char *), format));
 	if (format->datatype == 'c')
-		return (ft_print_chr(va_arg(*args, int), format));
+		return (print_chr(va_arg(*args, int), format));
 	if (format->datatype == 'i' || format->datatype == 'd')
-		return (ft_print_int(va_arg(*args, int), format));
+		return (print_int(va_arg(*args, int), format));
 	if (format->datatype == 'u')
-		return (ft_print_int(va_arg(*args, unsigned int), format));
+		return (print_int(va_arg(*args, unsigned int), format));
 	if (format->datatype == 'x' || format->datatype == 'X')
-		return (ft_print_hexa(va_arg(*args, unsigned int), format));
+		return (print_hexa(va_arg(*args, unsigned int), format));
 	if (format->datatype == 'p')
-		return (ft_print_pointer(va_arg(*args, unsigned long), format));
+		return (print_pointer(va_arg(*args, unsigned long), format));
 	return (-1);
 }
 
-int	ft_padding(char c, int n)
+int	padding(char c, int n)
 {
 	int	i;
 

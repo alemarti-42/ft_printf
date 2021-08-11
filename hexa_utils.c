@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 20:14:27 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 19:28:23 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:24:52 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_hexa(unsigned int nbr, t_format *format)
+int	print_hexa(unsigned int nbr, t_format *format)
 {
 	char	*hexa;
 	int		res;
@@ -20,10 +20,10 @@ int	ft_print_hexa(unsigned int nbr, t_format *format)
 	hexa = 0;
 	res = 0;
 	if (format->datatype == 'x')
-		hexa = ft_itoa_base(nbr, "0123456789abcdef");
+		hexa = itoa_base(nbr, "0123456789abcdef");
 	if (format->datatype == 'X')
-		hexa = ft_itoa_base(nbr, "0123456789ABCDEF");
-	res += ft_padding('0', format->precision - ft_strlen(hexa));
+		hexa = itoa_base(nbr, "0123456789ABCDEF");
+	res += padding('0', format->precision - ft_strlen(hexa));
 	format->precision = -1;
 	if (format->flags == '#' && nbr > 0)
 	{
@@ -34,12 +34,12 @@ int	ft_print_hexa(unsigned int nbr, t_format *format)
 		res += 2;
 	}
 	format->flags *= format->flags != '#';
-	res += ft_print_str(hexa, format);
+	res += print_str(hexa, format);
 	free(hexa);
 	return (res);
 }
 
-char	*ft_itoa_base(unsigned long nb, char *base)
+char	*itoa_base(unsigned long nb, char *base)
 {
 	size_t	base_size;
 	char	*res;
@@ -55,19 +55,19 @@ char	*ft_itoa_base(unsigned long nb, char *base)
 	while (nb >= base_size)
 	{
 		swap = res;
-		res = ft_str_add_chr(swap, base[nb % base_size]);
+		res = str_add_chr(swap, base[nb % base_size]);
 		free(swap);
 		i++;
 		nb /= base_size;
 	}
 	swap = res;
-	res = ft_str_add_chr(swap, base[nb]);
+	res = str_add_chr(swap, base[nb]);
 	free(swap);
 	reverse_string(res);
 	return (res);
 }
 
-char	*ft_str_add_chr(const char *str, const char chr)
+char	*str_add_chr(const char *str, const char chr)
 {
 	int		size;
 	char	*res;

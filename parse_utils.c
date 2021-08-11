@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 19:29:56 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:19:35 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_parse_format(const char *str, t_format *format)
+int	parse_format(const char *str, t_format *format)
 {
 	int		i;
 	char	*available_formats;
@@ -39,11 +39,11 @@ int	ft_parse_format(const char *str, t_format *format)
 		format->flags = str[0];
 		i++;
 	}
-	i += ft_get_width(&str[i], format);
+	i += get_width(&str[i], format);
 	if (str[i] == '.')
 	{
 		i += 1;
-		i += ft_get_precision(&str[i], format);
+		i += get_precission(&str[i], format);
 	}
 	if (!ft_strchr(available_formats, str[i]))
 		return (-1);
@@ -51,7 +51,7 @@ int	ft_parse_format(const char *str, t_format *format)
 	return (i + 1);
 }
 
-int	ft_get_precision(const char *str, t_format *form)
+int	get_precission(const char *str, t_format *form)
 {
 	int		i;
 	char	*nbr;
@@ -67,7 +67,7 @@ int	ft_get_precision(const char *str, t_format *form)
 	return (i);
 }
 
-int	ft_get_width(const char *str, t_format *form)
+int	get_width(const char *str, t_format *form)
 {
 	int		i;
 	char	*nbr;

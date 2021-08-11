@@ -6,13 +6,13 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 19:08:03 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 15:24:24 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:22:39 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_chr(int ascii, t_format *format)
+int	print_chr(int ascii, t_format *format)
 {
 	char	c;
 
@@ -21,7 +21,7 @@ int	ft_print_chr(int ascii, t_format *format)
 		return (-1);
 	if (format->flags == '-')
 		write(1, &c, 1);
-	ft_padding(' ', format->width - 1);
+	padding(' ', format->width - 1);
 	if (format->flags == 0)
 		write(1, &c, 1);
 	if (format->width <= 0)

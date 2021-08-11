@@ -6,23 +6,23 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:55:17 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/10 19:17:46 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 13:20:01 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_format	*ft_init_format(void)
+t_format	*init_format(void)
 {
 	t_format	*res;
 
 	res = (t_format *)malloc(sizeof(t_format));
-	if (!res || ft_reset_format(res) == -1)
+	if (!res || reset_format(res) == -1)
 		return (NULL);
 	return (res);
 }
 
-int	ft_reset_format(t_format *form)
+int	reset_format(t_format *form)
 {
 	if (!form)
 		return (-1);
