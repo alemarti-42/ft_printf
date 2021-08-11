@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:52:56 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 14:57:47 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 21:08:54 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	print_str(char *str, t_format *format)
 	char	filling;
 
 	filling = ' ';
+	if (str == NULL)
+		str = "(null)";
 	len = ft_strlen(str);
 	if (!check_format_string(format))
 		return (-1);
