@@ -6,10 +6,9 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/08/11 15:32:25 by alemarti         ###   ########.fr        #
+#    Updated: 2021/08/11 15:56:06 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 SRCS	= ft_memset.c	 	\
 		  ft_bzero.c 		\
@@ -44,8 +43,8 @@ SRCS	= ft_memset.c	 	\
 		  ft_putchar_fd.c	\
 		  ft_putstr_fd.c	\
 		  ft_putendl_fd.c	\
-		  ft_putnbr_fd.c	\
-		  ft_lstnew.c		\
+		  ft_putnbr_fd.c	
+SRCS_B	= ft_lstnew.c		\
 		  ft_lstadd_front.c	\
 		  ft_lstsize.c		\
 		  ft_lstlast.c		\
@@ -55,22 +54,29 @@ SRCS	= ft_memset.c	 	\
 		  ft_lstiter.c		\
 		  ft_lstmap.c
 
-PATH		= ../
-PATH_OBJS	= ../${OBJS}
+
 OBJS	= ${SRCS:.c=.o}
+OBJS_B	= ${SRCS_B:.c=.o}
+NAME	= libft.a
 CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra
 
-all:		ft_printf
+all:		${NAME}
 	
+${NAME}:	${OBJS}
+			ar rc	${NAME} ${OBJS}
+			ranlib	${NAME}
+
+
 clean:	
-			${RM} ${OBJS}
+			@${RM} ${OBJS} ${OBJS_B}
 
 fclean:		clean
+			@${RM} ${NAME}
 
-ft_printf:	${OBJS}
-			cp ${OBJS} ../
+bonus:		${OBJS} ${OBJS_B}
+			ar rc ${NAME} ${OBJS} ${OBJS_B}
+			ranlib ${NAME}
 
 re:			fclean all
-
