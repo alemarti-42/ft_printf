@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:48:39 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:57:33 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int			check_format_string(t_format *format);
 
 //	string_utils.c
 int			print_str(char *str, t_format *format);
+void		set_padding(int *pre_padding, int *post_padding, int *len, \
+		t_format *format);
 int			check_format_char(t_format *format);
 
 //	decimal_utils.c

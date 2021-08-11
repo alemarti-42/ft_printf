@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:55:58 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:20:51 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,15 @@ int	get_flags(const char *str, t_format *form)
 				form->flags = '0';
 			i++;
 		}
-		while (str[i++] == '-')
+		while (str[i] == '-')
+		{
 			if (form->flags != '-')
 				form->flags = '-';
+			i++;
+		}
 	}
-	if (str[0] == '#' || str[0] == ' ' || str[0] == '+')
+	if (str[i] == '#' || str[i] == ' ' || str[i] == '+')
 	{
-		if (form->flags)
-			return (0);
 		form->flags = str[0];
 		i++;
 	}
