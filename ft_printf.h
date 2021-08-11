@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 14:57:33 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/11 15:20:17 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 
