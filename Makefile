@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/08/11 13:34:14 by alemarti         ###   ########.fr        #
+#    Updated: 2021/08/11 15:15:19 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ OBJS		= ${SRCS:.c=.o}
 LIBFT_OBJS	= ${LIBFT_SRCS:.c=.o}
 
 NAME		= libftprintf.a
+
 CC			= gcc
 RM			= rm -f
 CFLAGS		= -Wall -Werror -Wextra
@@ -79,8 +80,6 @@ bonus:		all
 ${NAME}:	${OBJS} ${LIBFT_OBJS}
 			ar rc ${NAME} ${OBJS} ${LIBFT_OBJS}
 			ranlib ${NAME}
-
-libft:		${LIBFT_OBJS}
 
 ${LIBFT_OBJS}:
 			make -C ./libft/ ft_printf
@@ -94,15 +93,3 @@ fclean:		clean
 re:			fclean all
 
 PHONY:		all clean fclean re
-
-test_builtin:	
-			${CC} tests/main_builtin.c -o test.out
-			./test.out
-			@rm test.out
-
-test:		${LIBFT_OBJS} ${OBJS}
-			@${CC} ${OBJS} ${LIBFT_OBJS} tests/main.c -o test.out
-			./test.out
-
-testclean:	clean
-			@${RM} test.out
