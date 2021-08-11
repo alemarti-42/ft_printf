@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 11:43:48 by alemarti          #+#    #+#              #
-#    Updated: 2021/07/06 19:55:39 by alemarti         ###   ########.fr        #
+#    Updated: 2021/08/11 15:32:25 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,7 @@ clean:
 fclean:		clean
 
 ft_printf:	${OBJS}
-			mv ${OBJS} ../
-			@echo "LIBFT COMPILADA"
+			cp ${OBJS} ../
 
 re:			fclean all
 
