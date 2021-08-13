@@ -56,7 +56,7 @@ int	print_line(const char *str, va_list *args)
  *	ft_print_param returns the length of the format specifier on the input line
  *	needed to read the line properly.
  *	Ex: %10.3d	-> 5
- *	Also leaves on total_length the 
+ *	Also leaves on total_length the total length of the line being printed.
  */
 int	print_param(const char *str, va_list *args, int *total_length)
 {
@@ -74,6 +74,8 @@ int	print_param(const char *str, va_list *args, int *total_length)
 	if (!format)
 		return (-1);
 	format_len = parse_format(str, format);
+	if (format_len < 0)
+		return (-1);
 	format_ctl = sort_format(args, format);
 	*total_length += format_ctl;
 	free(format);

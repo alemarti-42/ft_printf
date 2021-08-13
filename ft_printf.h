@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 15:20:17 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/12 14:29:34 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+#include<stdio.h>
+
 typedef struct s_format
 {
 	char	flags;
+	char	flag_prefix;
 	int		width;
 	int		precision;
 	char	datatype;
-	char	*str;
 }	t_format;
 
 //	ft_printf.c
@@ -47,26 +49,21 @@ int			reset_format(t_format *form);
 
 //	char_utils.c
 int			print_chr(int ascii, t_format *format);
-int			check_format_string(t_format *format);
 
 //	string_utils.c
 int			print_str(char *str, t_format *format);
 void		set_padding(int *pre_padding, int *post_padding, int *len, \
 		t_format *format);
-int			check_format_char(t_format *format);
+
 
 //	decimal_utils.c
 int			print_int(long nbr, t_format *format);
 char		*put_zeroes(char *nb_ascii, t_format *format);
-int			check_format_int(long nbr, t_format *format);
 
 // HEXA
-int			print_hexa(unsigned int nbr, t_format *format);
+int			print_hexa(unsigned long nbr, t_format *format);
 char		*itoa_base(unsigned long nb, char *base);
 char		*str_add_chr(const char *str, const char chr);
 void		reverse_string(char *str);
-
-//	pointer_utils.c
-int			print_pointer(unsigned long mem, t_format *format);
 
 #endif

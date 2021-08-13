@@ -17,27 +17,14 @@ int	print_chr(int ascii, t_format *format)
 	char	c;
 
 	c = (char)ascii;
-	if (!check_format_char(format))
-		return (-1);
 	if (format->flags == '-')
 		write(1, &c, 1);
 	padding(' ', format->width - 1);
-	if (format->flags == 0)
+	if (format->flags != '-')
 		write(1, &c, 1);
 	if (format->width <= 0)
 	{
 		return (1);
 	}
 	return (format->width);
-}
-
-int	check_format_char(t_format *format)
-{
-	if (format->flags != '-' && format->flags)
-		return (0);
-	if (format->precision != -1)
-		return (0);
-	if (format->datatype != 'c')
-		return (0);
-	return (1);
 }

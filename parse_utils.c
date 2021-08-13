@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 14:20:51 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/12 14:27:20 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 int	parse_format(const char *str, t_format *format)
 {
 	int		i;
+	int		flags_ctl;
 	char	*available_formats;
 
 	available_formats = "cspdiuxX%";
 	i = 0;
-	i += get_flags(str, format);
+	flags_ctl = get_flags(str, format);
+	i += flags_ctl;
+	if (flags_ctl < 0)
+		return (-1);
 	i += get_width(&str[i], format);
 	if (str[i] == '.')
-	{
-		i += 1;
-		i += get_precission(&str[i], format);
-	}
-	if (!ft_strchr(available_formats, str[i]))
-		return (-1);
+		i += (get_precission(&str[i + 1], format) + 1);
+	//if (!ft_strchr(available_formats, str[i]))
+	//	return (-1);
 	format->datatype = str[i];
 	return (i + 1);
 }
@@ -37,7 +38,8 @@ int	get_flags(const char *str, t_format *form)
 	int		i;
 
 	i = 0;
-	while (str[i] == '0' || str[i] == '-')
+	
+	while (str[i] == '0' || str[i] == '-' || str[i] == '#')
 	{
 		while (str[i] == '0')
 		{
@@ -47,15 +49,31 @@ int	get_flags(const char *str, t_format *form)
 		}
 		while (str[i] == '-')
 		{
-			if (form->flags != '-')
-				form->flags = '-';
+			form->flags = '-';
+			i++;
+		}
+		while (str[i] == '#')
+		{
+			form->flag_prefix = '#';
 			i++;
 		}
 	}
-	if (str[i] == '#' || str[i] == ' ' || str[i] == '+')
+	
+	while (str[i] == ' ' || str[i] == '+')
 	{
-		form->flags = str[0];
-		i++;
+		if (form->flags == '-' || form->flags == '0')
+			return (-1);
+		while (str[i] == ' ')
+		{
+			if (form->flags != '+')
+				form->flags = ' ';
+			i++;
+		}
+		while (str[i] == '+')
+		{
+			form->flags = '+';
+			i++;
+		}
 	}
 	return (i);
 }

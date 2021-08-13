@@ -6,34 +6,42 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 20:14:27 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:24:52 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/12 14:46:41 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_hexa(unsigned int nbr, t_format *format)
+int	print_hexa(unsigned long nbr, t_format *format)
 {
 	char	*hexa;
+	char	*swap;
 	int		res;
 
 	hexa = 0;
 	res = 0;
-	if (format->datatype == 'x')
+	
+	if (format->datatype == 'x' || format->datatype == 'p')
 		hexa = itoa_base(nbr, "0123456789abcdef");
 	if (format->datatype == 'X')
 		hexa = itoa_base(nbr, "0123456789ABCDEF");
-	res += padding('0', format->precision - ft_strlen(hexa));
-	format->precision = -1;
-	if (format->flags == '#' && nbr > 0)
+	swap = put_zeroes(hexa, format);
+	
+	if ((format->flag_prefix == '#' && nbr > 0) || format->datatype == 'p')
 	{
-		if (format->datatype == 'x')
-			ft_putstr_fd("0x", 1);
+		free(hexa);
+		if (format->datatype == 'x' || format->datatype == 'p')
+			hexa = ft_strjoin("0x", swap);
+			//ft_putstr_fd("0x", 1);
 		if (format->datatype == 'X')
-			ft_putstr_fd("0X", 1);
-		res += 2;
+			hexa = ft_strjoin("0X", swap);
+			//ft_putstr_fd("0X", 1);
+		//res += 2;
 	}
-	format->flags *= format->flags != '#';
+	free(swap);
+//	res += padding('0', format->precision - ft_strlen(hexa));
+	format->precision = -1;
+	format->flag_prefix *= format->flag_prefix != '#';
 	res += print_str(hexa, format);
 	free(hexa);
 	return (res);

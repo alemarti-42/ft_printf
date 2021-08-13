@@ -24,8 +24,6 @@ int	print_str(char *str, t_format *format)
 	if (str == NULL)
 		str = "(null)";
 	len = ft_strlen(str);
-	if (!check_format_string(format))
-		return (-1);
 	if (format->flags == '0')
 		filling = '0';
 	set_padding(&pre_padding, &post_padding, &len, format);
@@ -50,12 +48,4 @@ void	set_padding(int *pre_padding, int *post_padding, int *len, \
 		*post_padding = *pre_padding;
 		*pre_padding = 0;
 	}
-}
-
-int	check_format_string(t_format *format)
-{
-	if (format->flags == '0' || format->flags == '-' || \
-			format->flags == ' ' || !format->flags)
-		return (1);
-	return (0);
 }

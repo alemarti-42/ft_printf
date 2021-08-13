@@ -20,16 +20,19 @@ int	print_int(long nbr, t_format *format)
 	int		sp_padding;
 
 	filling = ' ';
-	if (!check_format_int(nbr, format))
-		return (-1);
+	if (format->flags == '0')
+		filling = '0';
 	swap = ft_itoa(nbr);
 	nb_ascii = put_zeroes(swap, format);
 	free(swap);
 	sp_padding = format->width - ft_strlen(nb_ascii);
-	sp_padding *= (sp_padding > 0);
+	
+	if ((format->flags == ' ' || format->flags == '+') && nbr >= 0)
+		sp_padding--;
 	if (format->flags == '-')
 		ft_putstr_fd(nb_ascii, 1);
-	padding(' ', sp_padding);
+	sp_padding *= (sp_padding > 0);
+	padding(filling, sp_padding);
 	if ((format->flags == ' ' || format->flags == '+') && nbr >= 0)
 	{
 		write(1, &format->flags, 1);
@@ -69,15 +72,4 @@ char	*put_zeroes(char *nb_ascii, t_format *format)
 	res[i] = 0;
 	return (res);
 }
-
-int	check_format_int(long nbr, t_format *format)
-{
-	if (format->flags == '0' && format->precision == -1)
-	{
-		format->precision = format->width;
-		format->width = 0;
-		if (nbr < 0)
-			format->precision -= 1;
-	}
-	return (1);
-}
+ 

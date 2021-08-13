@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 13:08:53 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:17:46 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/12 14:11:19 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	sort_format(va_list *args, t_format *format)
 {
 	if (format->datatype == '%')
+	{
+		format->precision = -1;
 		return (print_str("%", format));
+	}
 	if (format->datatype == 's')
 		return (print_str(va_arg(*args, char *), format));
 	if (format->datatype == 'c')
@@ -25,9 +28,11 @@ int	sort_format(va_list *args, t_format *format)
 	if (format->datatype == 'u')
 		return (print_int(va_arg(*args, unsigned int), format));
 	if (format->datatype == 'x' || format->datatype == 'X')
+	{
 		return (print_hexa(va_arg(*args, unsigned int), format));
+	}
 	if (format->datatype == 'p')
-		return (print_pointer(va_arg(*args, unsigned long), format));
+		return (print_hexa(va_arg(*args, unsigned long), format));
 	return (-1);
 }
 

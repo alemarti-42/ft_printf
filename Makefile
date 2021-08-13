@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/08/11 15:15:19 by alemarti         ###   ########.fr        #
+#    Updated: 2021/08/13 13:58:20 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,9 @@ SRCS		= ft_printf.c		\
 			  string_utils.c	\
 			  char_utils.c		\
 			  decimal_utils.c	\
-			  hexa_utils.c		\
-			  pointer_utils.c
+			  hexa_utils.c		
 
-LIBFT_SRCS	= ft_memset.c	 	\
+#LIBFT_SRCS	= ft_memset.c	 	\
 			  ft_bzero.c 		\
 			  ft_memcpy.c 		\
 			  ft_memccpy.c 		\
@@ -65,11 +64,11 @@ LIBFT_SRCS	= ft_memset.c	 	\
 			  ft_lstmap.c
 
 OBJS		= ${SRCS:.c=.o}
-LIBFT_OBJS	= ${LIBFT_SRCS:.c=.o}
+#LIBFT_OBJS	= ${LIBFT_SRCS:.c=.o}
 
 NAME		= libftprintf.a
 
-CC			= gcc
+CC			= @gcc
 RM			= rm -f
 CFLAGS		= -Wall -Werror -Wextra
 
@@ -77,18 +76,22 @@ all:		${NAME}
 
 bonus:		all
 
-${NAME}:	${OBJS} ${LIBFT_OBJS}
-			ar rc ${NAME} ${OBJS} ${LIBFT_OBJS}
-			ranlib ${NAME}
+${NAME}:	${OBJS} 
+			make -C ./libft/ ft_printf
+			@ar rc ${NAME} *.o	#${OBJS} ${LIBFT_OBJS}
 
-${LIBFT_OBJS}:
+libft:		#${LIBFT_OBJS}:
 			make -C ./libft/ ft_printf
 
 clean:
-			@${RM} ${OBJS} ${LIBFT_OBJS}
+			${RM} *.o
 
 fclean:		clean
-			@${RM} ${NAME}
+			${RM} ${NAME}
+
+test:		all
+			${CC} ${CFLAGS} ${NAME} main.c
+			./a.out
 
 re:			fclean all
 
