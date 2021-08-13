@@ -25,23 +25,33 @@ int	print_hexa(unsigned long nbr, t_format *format)
 		hexa = itoa_base(nbr, "0123456789abcdef");
 	if (format->datatype == 'X')
 		hexa = itoa_base(nbr, "0123456789ABCDEF");
+	//if (format->flag_prefix == '#' && format->flags == '0')
+	//	format->width -= 2;
+	//if (format->precision < 0)
+	//	format->precision = format->width;
+	//if (format->flag_prefix == '#' && format->flags == '0')
+	//	format->precision -= 2;
+	if (format->flag_prefix == '#' && format->flags == '0' )
+	{
+		format->precision = format->width - 2;
+		format->width = 0;
+	}
 	swap = put_zeroes(hexa, format);
-	
+
+
 	if ((format->flag_prefix == '#' && nbr > 0) || format->datatype == 'p')
 	{
 		free(hexa);
 		if (format->datatype == 'x' || format->datatype == 'p')
 			hexa = ft_strjoin("0x", swap);
-			//ft_putstr_fd("0x", 1);
 		if (format->datatype == 'X')
 			hexa = ft_strjoin("0X", swap);
-			//ft_putstr_fd("0X", 1);
-		//res += 2;
 	}
 	free(swap);
-//	res += padding('0', format->precision - ft_strlen(hexa));
 	format->precision = -1;
 	format->flag_prefix *= format->flag_prefix != '#';
+	// if (format->flags == '0')
+	// 	format->precision = format->width;
 	res += print_str(hexa, format);
 	free(hexa);
 	return (res);

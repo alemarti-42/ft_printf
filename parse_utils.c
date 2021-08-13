@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:59:37 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/12 14:27:20 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/08/13 17:58:16 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,45 +36,69 @@ int	parse_format(const char *str, t_format *format)
 int	get_flags(const char *str, t_format *form)
 {
 	int		i;
+	char	*available_flags;
 
 	i = 0;
-	
-	while (str[i] == '0' || str[i] == '-' || str[i] == '#')
+	available_flags = "-0+ #";
+	while (ft_strchr(available_flags, str[i]))
 	{
-		while (str[i] == '0')
-		{
-			if (form->flags != '-')
-				form->flags = '0';
-			i++;
-		}
-		while (str[i] == '-')
+		if (str[i] == '-')
 		{
 			form->flags = '-';
-			i++;
 		}
-		while (str[i] == '#')
+		if (str[i] == '0' && form->flags != '-')
 		{
-			form->flag_prefix = '#';
-			i++;
+			form->flags = '0';
 		}
-	}
-	
-	while (str[i] == ' ' || str[i] == '+')
-	{
-		if (form->flags == '-' || form->flags == '0')
-			return (-1);
-		while (str[i] == ' ')
-		{
-			if (form->flags != '+')
-				form->flags = ' ';
-			i++;
-		}
-		while (str[i] == '+')
+		if (str[i] == '+' && form->flags != '0' && form->flags != '-')
 		{
 			form->flags = '+';
-			i++;
 		}
+		if (str[i] == ' ' && !form->flags)
+		{
+			form->flags = ' ';
+		}
+		if (str[i] == '#')
+		{
+			form->flag_prefix = '#';
+		}
+		i++;
 	}
+	// while (str[i] == '0' || str[i] == '-' || str[i] == '#')
+	// {
+	// 	while (str[i] == '0')
+	// 	{
+	// 		if (form->flags != '-')
+	// 			form->flags = '0';
+	// 		i++;
+	// 	}
+	// 	while (str[i] == '-')
+	// 	{
+	// 		form->flags = '-';
+	// 		i++;
+	// 	}
+	// 	while (str[i] == '#')
+	// 	{
+	// 		form->flag_prefix = '#';
+	// 		i++;
+	// 	}
+	// }
+	
+	// while (str[i] == ' ' || str[i] == '+')
+	// {
+	// 	while (str[i] == ' ')
+	// 	{
+	// 		if (form->flags == 0)
+	// 			form->flags = ' ';
+	// 		i++;
+	// 	}
+	// 	while (str[i] == '+')
+	// 	{
+	// 		if (form->flags == 0 || form->flags == ' ')
+	// 		form->flags = '+';
+	// 		i++;
+	// 	}
+	// }
 	return (i);
 }
 

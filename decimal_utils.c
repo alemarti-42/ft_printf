@@ -58,7 +58,10 @@ char	*put_zeroes(char *nb_ascii, t_format *format)
 		is_neg = 1;
 	digits = ft_strlen(nb_ascii) - is_neg;
 	ze_padding = format->precision - digits;
+	ze_padding *= ze_padding > 0;
 	res = (char *)malloc(sizeof(char) * (is_neg + digits + ze_padding + 1));
+	if (!res)
+		return (NULL);
 	res[0] = '-';
 	i += is_neg;
 	nb_ascii += is_neg;

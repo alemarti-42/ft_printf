@@ -35,7 +35,8 @@ int			print_param(const char *str, va_list *args, int *pos);
 
 //	ft_printf_utils.c
 int			sort_format(va_list *args, t_format *format);
-int			padding(char c, int n);
+//int			padding(char c, int n);
+char		*padding(int n, char c);
 
 //		parse_utils.c
 int			parse_format(const char *str, t_format *format);

@@ -36,16 +36,32 @@ int	sort_format(va_list *args, t_format *format)
 	return (-1);
 }
 
-int	padding(char c, int n)
-{
-	int	i;
+// int	padding(char c, int n)
+// {
+// 	int	i;
 
-	i = 0;
-	while (n > 0)
+// 	i = 0;
+// 	while (n > 0)
+// 	{
+// 		write (1, &c, 1);
+// 		n--;
+// 		i++;
+// 	}
+// 	return (i);
+// }
+
+char	*padding(int n, char c)
+{
+	char	*res;
+
+	res = (char *)malloc(sizeof(char) * (n + 1));
+	if (!res)
+		return (NULL);
+	res[n--] = 0;
+	while (n >= 0)
 	{
-		write (1, &c, 1);
+		res[n] = c;
 		n--;
-		i++;
 	}
-	return (i);
+	return (res);
 }

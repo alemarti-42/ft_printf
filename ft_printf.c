@@ -75,7 +75,10 @@ int	print_param(const char *str, va_list *args, int *total_length)
 		return (-1);
 	format_len = parse_format(str, format);
 	if (format_len < 0)
+	{
+		free(format);
 		return (-1);
+	}
 	format_ctl = sort_format(args, format);
 	*total_length += format_ctl;
 	free(format);
