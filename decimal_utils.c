@@ -15,33 +15,53 @@
 int	print_int(long nbr, t_format *format)
 {
 	char	*nb_ascii;
-	char	filling;
-	char	*swap;
-	int		sp_padding;
+	int	res;
 
-	filling = ' ';
-	if (format->flags == '0')
-		filling = '0';
-	swap = ft_itoa(nbr);
-	nb_ascii = put_zeroes(swap, format);
-	free(swap);
-	sp_padding = format->width - ft_strlen(nb_ascii);
-	
-	if ((format->flags == ' ' || format->flags == '+') && nbr >= 0)
-		sp_padding--;
-	if (format->flags == '-')
-		ft_putstr_fd(nb_ascii, 1);
-	sp_padding *= (sp_padding > 0);
-	padding(filling, sp_padding);
-	if ((format->flags == ' ' || format->flags == '+') && nbr >= 0)
-	{
-		write(1, &format->flags, 1);
-		sp_padding++;
-	}
-	if (format->flags != '-')
-		ft_putstr_fd(nb_ascii, 1);
+	nb_ascii = ft_itoa(nbr);
+	nb_ascii = add_prefix_nb(nb_ascii, format);
+	res = ft_strlen(nb_ascii);
+	ft_putstr_fd(nb_ascii, 1);
 	free(nb_ascii);
-	return (sp_padding + ft_strlen(nb_ascii));
+	return (res);
+}
+
+char	*add_prefix_nb(char *nb_ascii, t_format *format)
+{
+	char	*swap;
+	char	*aux_zeroes;
+	char	*aux_nb;
+	int		is_neg;
+	int		ze_padding;
+
+
+	is_neg = 0;
+	if (nb_ascii[0] == '-')
+		is_neg = 1;
+	ze_padding = 0;
+	
+	
+	if (format->flags == ' ')
+		swap = ft_strdup(" ");
+	else if (format->flags == '+' && nb_ascii[0] != '-')
+		swap = ft_strdup("+");
+	else if ( nb_ascii[0] == '-')
+	{
+		aux_nb = ft_substr(nb_ascii, 1, 30);
+		swap = ft_strdup("-");
+		free (nb_ascii);
+		nb_ascii = aux_nb;
+	}
+	else
+		swap = ft_strdup("");
+	aux_zeroes = padding(format->precision - ft_strlen(nb_ascii), '0');
+	aux_nb = ft_strjoin(swap, aux_zeroes);
+	free(aux_zeroes);
+	free(swap);
+	swap = ft_strjoin(aux_nb, nb_ascii);
+
+	free(nb_ascii);
+	free(aux_nb);
+	return(swap);
 }
 
 char	*put_zeroes(char *nb_ascii, t_format *format)
@@ -75,4 +95,4 @@ char	*put_zeroes(char *nb_ascii, t_format *format)
 	res[i] = 0;
 	return (res);
 }
- 
+

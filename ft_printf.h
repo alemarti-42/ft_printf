@@ -59,6 +59,7 @@ void		set_padding(int *pre_padding, int *post_padding, int *len, \
 
 //	decimal_utils.c
 int			print_int(long nbr, t_format *format);
+char	*add_prefix_nb(char *nb_ascii, t_format *format);
 char		*put_zeroes(char *nb_ascii, t_format *format);
 
 // HEXA

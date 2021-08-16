@@ -15,11 +15,16 @@
 int	print_chr(int ascii, t_format *format)
 {
 	char	c;
+	int		i;
 
+	i = 0;
 	c = (char)ascii;
 	if (format->flags == '-')
 		write(1, &c, 1);
-	padding(' ', format->width - 1);
+	while (i++ < format->width - 1)
+	{
+		write (1, " ", 1);
+	}
 	if (format->flags != '-')
 		write(1, &c, 1);
 	if (format->width <= 0)

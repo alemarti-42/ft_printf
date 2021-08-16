@@ -54,10 +54,12 @@ char	*padding(int n, char c)
 {
 	char	*res;
 
+	n *= n > 0;
 	res = (char *)malloc(sizeof(char) * (n + 1));
 	if (!res)
 		return (NULL);
-	res[n--] = 0;
+	res[n] = 0;
+	n--;
 	while (n >= 0)
 	{
 		res[n] = c;
