@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:08:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/09/07 14:25:28 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/09/07 14:47:12 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*put_zeroes(char *nb_ascii, t_format *format)
 
 void	parse_zero_flag(t_format *format, char *nbr)
 {
-	if (format->flags == '0' && format->precision < 0 )
+	if (format->flags == '0' && format->precision < 0 && format->width > 0)
 	{
 		format->precision = format->width;
 		format->width = 0;
