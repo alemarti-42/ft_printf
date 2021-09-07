@@ -6,7 +6,7 @@
 #    By: alemarti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 20:30:12 by alemarti          #+#    #+#              #
-#    Updated: 2021/08/11 15:15:19 by alemarti         ###   ########.fr        #
+#    Updated: 2021/09/07 12:14:46 by alemarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,5 +91,9 @@ fclean:		clean
 			@${RM} ${NAME}
 
 re:			fclean all
+
+leaks:		all
+			gcc -Wall -Wextra -Werror -g3 -fsanitize=address main.c libftprintf.a
+			./a.out
 
 PHONY:		all clean fclean re

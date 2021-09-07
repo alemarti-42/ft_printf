@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 15:20:17 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:30:23 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_format
 	int		width;
 	int		precision;
 	char	datatype;
-	char	*str;
 }	t_format;
 
 //	ft_printf.c
@@ -47,18 +46,15 @@ int			reset_format(t_format *form);
 
 //	char_utils.c
 int			print_chr(int ascii, t_format *format);
-int			check_format_string(t_format *format);
 
 //	string_utils.c
 int			print_str(char *str, t_format *format);
 void		set_padding(int *pre_padding, int *post_padding, int *len, \
 		t_format *format);
-int			check_format_char(t_format *format);
 
 //	decimal_utils.c
 int			print_int(long nbr, t_format *format);
 char		*put_zeroes(char *nb_ascii, t_format *format);
-int			check_format_int(long nbr, t_format *format);
 
 // HEXA
 int			print_hexa(unsigned int nbr, t_format *format);

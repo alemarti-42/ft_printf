@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 18:55:17 by alemarti          #+#    #+#             */
-/*   Updated: 2021/08/11 13:20:01 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/09/07 12:30:05 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int	reset_format(t_format *form)
 	form->width = -1;
 	form->precision = -1;
 	form->datatype = 0;
-	form->str = 0;
 	return (0);
 }
