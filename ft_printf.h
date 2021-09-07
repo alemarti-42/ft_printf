@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 14:43:00 by alemarti          #+#    #+#             */
-/*   Updated: 2021/09/07 12:30:23 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/09/07 14:17:50 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		set_padding(int *pre_padding, int *post_padding, int *len, \
 //	decimal_utils.c
 int			print_int(long nbr, t_format *format);
 char		*put_zeroes(char *nb_ascii, t_format *format);
+void		parse_zero_flag(t_format *format, char *nbr);
 
 // HEXA
 int			print_hexa(unsigned int nbr, t_format *format);

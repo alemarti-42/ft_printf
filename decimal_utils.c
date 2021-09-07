@@ -6,7 +6,7 @@
 /*   By: alemarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 19:08:49 by alemarti          #+#    #+#             */
-/*   Updated: 2021/09/07 12:25:38 by alemarti         ###   ########.fr       */
+/*   Updated: 2021/09/07 14:25:28 by alemarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*put_zeroes(char *nb_ascii, t_format *format)
 	is_neg = 0;
 	if (nb_ascii[0] == '-')
 		is_neg = 1;
+	parse_zero_flag(format, nb_ascii);
 	digits = ft_strlen(nb_ascii) - is_neg;
 	ze_padding = format->precision - digits;
 	ze_padding *= ze_padding > 0;
@@ -65,4 +66,17 @@ char	*put_zeroes(char *nb_ascii, t_format *format)
 		res[i++] = *(nb_ascii++);
 	res[i] = 0;
 	return (res);
+}
+
+void	parse_zero_flag(t_format *format, char *nbr)
+{
+	if (format->flags == '0' && format->precision < 0 )
+	{
+		format->precision = format->width;
+		format->width = 0;
+		if (nbr[0] == '-')
+			format->precision -= 1;
+	}
+	if (nbr[0] == '0' && format->precision == 0)
+		*nbr = 0;
 }
